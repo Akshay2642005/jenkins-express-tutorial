@@ -9,6 +9,11 @@ app.get('/', (_req, res) => {
 app.get('/api/v1/status', (_req, res) => {
   res.send('Ok');
 });
+
+app.get('/api/v1/auth', (_req, res) => {
+  res.send('Auth');
+});
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
