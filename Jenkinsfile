@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-      kubernetes {
-        label 'docker-agent'
-        defaultContainer 'docker'
-      }
-    }
+    agent any
 
     environment {
         IMAGE_NAME = 'hello-express'
