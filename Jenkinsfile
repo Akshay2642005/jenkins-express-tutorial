@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-      kubernetes {
-        label 'docker-agent'
-        defaultContainer 'docker'
-      }
-    }
+    agent any
 
     environment {
         IMAGE_NAME = 'hello-express'
@@ -24,7 +19,7 @@ pipeline {
             steps {
                 script {
 
-                    sh "docker build -t $IMAGE_NAME ."
+                      bat "docker build -t $IMAGE_NAME ."
                 }
             }
         }
@@ -33,10 +28,10 @@ pipeline {
             steps {
                 script {
                     // Stop and remove existing container if running
-                    sh "docker rm -f $CONTAINER_NAME || true"
+                    bat "docker rm -f $CONTAINER_NAME || true"
 
                     // Run the container on the new port
-                    sh "docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME"
+                    bat "docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME"
                 }
 
             }
