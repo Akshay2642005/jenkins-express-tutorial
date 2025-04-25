@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent 'linux'
 
     environment {
         IMAGE_NAME = 'hello-express'
