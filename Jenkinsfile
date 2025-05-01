@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
 
-                      bat "docker build -t $IMAGE_NAME ."
+                      sh "docker build -t $IMAGE_NAME ."
                 }
             }
         }
@@ -28,10 +28,10 @@ pipeline {
             steps {
                 script {
                     // Stop and remove existing container if running
-                    bat "docker rm -f $CONTAINER_NAME || true"
+                    sh "docker rm -f $CONTAINER_NAME || true"
 
                     // Run the container on the new port
-                    bat "docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME"
+                    sh "docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME"
                 }
 
             }
